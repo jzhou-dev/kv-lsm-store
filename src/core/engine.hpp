@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ResponseStatus.hpp"
-#include "SkipList.hpp"
+#include "response_status.hpp"
+#include "skip_list.hpp"
 #include <string>
 
 class Engine {

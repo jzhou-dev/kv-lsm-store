@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ResponseStatus.hpp"
+#include "response_status.hpp"
 #include <string>
 #include <vector>
 
