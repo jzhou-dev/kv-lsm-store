@@ -32,6 +32,7 @@ public:
   ResponseStatus insert(const std::string &key, const std::string &value);
   ResponseStatus update(const std::string &key, const std::string &value);
   ResponseStatus remove(const std::string &key);
+  void print();
 
 private:
   std::vector<Node *> levels;

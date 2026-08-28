@@ -1,5 +1,6 @@
 #include "SkipList.hpp"
 #include <iostream>
+#include <random>
 
 SkipList::SkipList() { SkipList(0, 0); }
 SkipList::SkipList(int _max_level, float _p) {
@@ -15,7 +16,31 @@ SkipList::SkipList(int _max_level, float _p) {
   }
 }
 
-int SkipList::randomLevel() { return 0; }
+int SkipList::randomLevel() {
+  static std::mt19937 gen(std::random_device{}());
+  static std::uniform_int_distribution<int> distrib(1, 100);
+  int level = 1;
+  int prob = p * 100;
+  while (level < max_level && distrib(gen) <= prob) {
+    level++;
+  }
+  return level;
+}
+
+void SkipList::print() {
+  for (int i = curr_level; i >= 0; --i) {
+    Node *curr = levels[i]->next;
+    std::cout << "Level " << i << ": ";
+    while (curr) {
+      std::cout << curr->key;
+      if (curr->next) {
+        std::cout << " -> ";
+      }
+      curr = curr->next;
+    }
+    std::cout << '\n';
+  }
+}
 
 ResponseStatus SkipList::search(const std::string &key) const {
   std::vector<Node *> temp;

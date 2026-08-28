@@ -11,6 +11,7 @@ public:
   ResponseStatus Post(const std::string &key, const std::string &value);
   ResponseStatus Put(const std::string &key, const std::string &value);
   ResponseStatus Delete(const std::string &key);
+  void print();
 
 private:
   SkipList list;
